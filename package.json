@@ -1,0 +1,14 @@
+{
+  "name": "livetweet",
+  "version": "1.0.0",
+  "description": "get live tweer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JohnC",
+  "license": "ISC",
+  "dependencies": {
+    "rita": "^1.3.94"
+  }
+}
