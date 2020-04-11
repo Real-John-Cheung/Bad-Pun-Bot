@@ -14,7 +14,7 @@ let donaldTrump = {id:'25073877'};
 let badPunBot = {id:'1243074773984227329'};
 let borisJohnson = {id :'3131144855'};
 
-rt.onTweetMatching({follow:badPunBot.id }, function(tweet) {
+rt.onTweetMatching({follow:donaldTrump.id+','+borisJohnson.id }, function(tweet) {
   if (busy){
     console.log('a tweet is being tweeted')
     return;
@@ -87,15 +87,21 @@ rt.onTweetMatching({follow:badPunBot.id }, function(tweet) {
             //if try more than 100 times, break the loop
           }
         }
-        newWord = RiTa.randomItem(RiTa.similarBySound(wordToChange));
-        let ritaLoopTime = 0;
-        while (getGeneralPos(RiTa.getPosTags(newWord))!=generalPos){
-          newWord = RiTa.randomItem(RiTa.similarBySound(wordToChange));
-          ritaLoopTime++;
-          if (ritaLoopTime>1000){
-            newWord = RiTa.randomWord();
-            break;
+        if (RiTa.similarBySound(wordToChange).length > 0){
+          for (let i = 0;i<RiTa.similarBySound(wordToChange).length;i++){
+            let tem = RiTa.similarBySound(wordToChange)[i];
+            let temPos = RiTa.getPosTags(tem);
+            let temGeneralPos = getGeneralPos(temPos);
+            console.log(tem+' '+temGeneralPos+' '+generalPos+' '+i);
+            if (temGeneralPos == generalPos){
+              newWord = tem;
+              break;
+            } else if (i == RiTa.similarBySound(wordToChange).length -1){
+              newWord = RiTa.randomWord();
+            }
           }
+        } else {
+          newWord = RiTa.randomWord();
         }
         //randomly pick a word with same pos to check the pronounciation
         counter++;
