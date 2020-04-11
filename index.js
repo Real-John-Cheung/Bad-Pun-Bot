@@ -58,8 +58,8 @@ rt.onTweetMatching({
     console.log('a tweet is being tweeted')
     return;
   }
-  busy = true;
   if (tweet.lang == 'en' && toFollow.indexOf(tweet.user.id_str)>=0) {
+    busy = true;
     console.log('orinal tweet:')
     console.log(tweet.text);
     //get the text of the tweet
