@@ -10,12 +10,20 @@ let nounInflector = new natural.NounInflector();
 let verbInflector = new natural.PresentVerbInflector();
 console.log('initialized');
 let busy = false;
-let donaldTrump = {id:'25073877'};
-let badPunBot = {id:'1243074773984227329'};
-let borisJohnson = {id :'3131144855'};
+let donaldTrump = {
+  id: '25073877'
+};
+let badPunBot = {
+  id: '1243074773984227329'
+};
+let borisJohnson = {
+  id: '3131144855'
+};
 
-rt.onTweetMatching({follow:donaldTrump.id+','+borisJohnson.id }, function(tweet) {
-  if (busy){
+rt.onTweetMatching({
+  follow: donaldTrump.id + ',' + borisJohnson.id
+}, function(tweet) {
+  if (busy) {
     console.log('a tweet is being tweeted')
     return;
   }
@@ -61,11 +69,13 @@ rt.onTweetMatching({follow:donaldTrump.id+','+borisJohnson.id }, function(tweet)
       let newWord = RiTa.randomWord(generalPos);
       let counter = 0;
       let shouldStore = true;
+      let triedWorldIndex = [];
       while (!metaphone.compare(wordToChange, newWord) || wordToChange.toUpperCase() == newWord.toUpperCase()) {
         //the condition in while() is to check whether the new word pronounces similarly to the original world or not
         //also to check if they are the same
         shouldStore = true;
-        if (counter > 20000) {
+        if (counter > 20) {
+          triedWorldIndex = [];
           console.log('');
           console.log('trying new word ' + tryNewWordTimes + ' :');
           let oldIndex = indexToChange;
@@ -87,24 +97,27 @@ rt.onTweetMatching({follow:donaldTrump.id+','+borisJohnson.id }, function(tweet)
             //if try more than 100 times, break the loop
           }
         }
-        if (RiTa.similarBySound(wordToChange).length > 0){
-          for (let i = 0;i<RiTa.similarBySound(wordToChange).length;i++){
+        if (RiTa.similarBySound(wordToChange).length > 0) {
+          for (let i = 0; i < RiTa.similarBySound(wordToChange).length; i++) {
             let tem = RiTa.similarBySound(wordToChange)[i];
             let temPos = RiTa.getPosTags(tem);
             let temGeneralPos = getGeneralPos(temPos);
-            console.log(tem+' '+temGeneralPos+' '+generalPos+' '+i);
-            if (temGeneralPos == generalPos){
+            if (temGeneralPos == generalPos && triedWorldIndex.indexOf(i) < 0) {
               newWord = tem;
+              triedWorldIndex.push(i);
               break;
-            } else if (i == RiTa.similarBySound(wordToChange).length -1){
+            }
+            if (i == RiTa.similarBySound(wordToChange).length - 1) {
               newWord = RiTa.randomWord();
             }
           }
         } else {
           newWord = RiTa.randomWord();
         }
+        console.log(triedWorldIndex + ' ' + metaphone.compare(wordToChange, newWord));
         //randomly pick a word with same pos to check the pronounciation
         counter++;
+        console.log(counter);
         //change to other word in the text if 10000 words have been try and no similar pronounced word found
       }
       if (shouldStore) {
@@ -132,7 +145,7 @@ rt.onTweetMatching({follow:donaldTrump.id+','+borisJohnson.id }, function(tweet)
     } else {
       let newText = RiTa.untokenize(arrayOfText);
       newText = cleanNewText(newText);
-      newText = newText+' \n'+'Original tweet from '+ '@'+tweet.user.screen_name;
+      newText = newText + ' \n' + 'Original tweet from ' + '@' + tweet.user.screen_name;
       //get the new text
       rt.tweet(newText, function(e) {
         if (e) throw e;
@@ -147,7 +160,7 @@ rt.onTweetMatching({follow:donaldTrump.id+','+borisJohnson.id }, function(tweet)
   }
 });
 
-function getGeneralPos(pos){
+function getGeneralPos(pos) {
   let posTagsNouns = ['nn', 'nns', 'nnp', 'nnps'];
   let posTagsVerbs = ['vb', 'vbd', 'vbg', 'vbn', 'vbp', 'vbz'];
   if (posTagsNouns.indexOf(pos) >= 0) {
