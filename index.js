@@ -19,7 +19,37 @@ let badPunBot = {
 let borisJohnson = {
   id: '3131144855'
 };
-let toFollow = [donaldTrump.id,borisJohnson.id];
+let barackObama = {
+  id:'813286'
+}
+let modi = {
+  id:'18839785'
+}
+let papaFrancisco= {
+  id:'500704345'
+}
+let hillaryClinton = {
+  id:'1339835893'
+}
+let mikePence = {
+  id:'22203756'
+}
+let joeBiden = {
+  id:'939091'
+}
+let tsaiIngWen = {
+  id:'155814794'
+}
+let zhaoLiJian = {
+  id:'141627220'
+}
+let justinTrudeau = {
+  id:'14260960'
+}
+let ruthDavidson = {
+  id:'211994193'
+}
+let toFollow = [donaldTrump.id,borisJohnson.id,barackObama.id,modi.id,papaFrancisco.id,hillaryClinton.id,mikePence.id,joeBiden.id,tsaiIngWen.id,zhaoLiJian.id,justinTrudeau.id,ruthDavidson.id];
 
 rt.onTweetMatching({
   follow: toFollow
