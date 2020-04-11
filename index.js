@@ -19,16 +19,17 @@ let badPunBot = {
 let borisJohnson = {
   id: '3131144855'
 };
+let toFollow = [donaldTrump.id,borisJohnson.id];
 
 rt.onTweetMatching({
-  follow: donaldTrump.id + ',' + borisJohnson.id
+  follow: toFollow
 }, function(tweet) {
   if (busy) {
     console.log('a tweet is being tweeted')
     return;
   }
   busy = true;
-  if (tweet.lang == 'en') {
+  if (tweet.lang == 'en' && toFollow.indexOf(tweet.user.id_str)>=0) {
     console.log('orinal tweet:')
     console.log(tweet.text);
     //get the text of the tweet
