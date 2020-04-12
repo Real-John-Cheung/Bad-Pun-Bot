@@ -235,7 +235,3 @@ function cleanNewText(newText) {
   newText = newText.replace(/\#\ /g, '#');
   return newText;
 }
-
-app.listen(app.get('Port'),function(){
-  console.log('app is listening to port '+app.get('Port'));
-});
