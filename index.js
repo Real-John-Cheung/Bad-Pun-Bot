@@ -50,7 +50,7 @@ let ruthDavidson = {
   id: '211994193'
 }
 let toFollow = [donaldTrump.id, borisJohnson.id, barackObama.id, modi.id, papaFrancisco.id, hillaryClinton.id, mikePence.id, joeBiden.id, tsaiIngWen.id, zhaoLiJian.id, justinTrudeau.id, ruthDavidson.id];
-
+//the political figures that I found
 rt.onTweetMatching({
   follow: toFollow
 }, function(tweet) {
