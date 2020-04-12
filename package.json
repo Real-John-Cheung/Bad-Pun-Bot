@@ -1,4 +1,4 @@
-{
+{ "start":"index.js",
   "name": "livetweet",
   "version": "1.0.0",
   "description": "get live tweer",
@@ -9,6 +9,7 @@
   "author": "JohnC",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "rita": "^1.3.94"
   }
 }
