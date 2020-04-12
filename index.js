@@ -2,10 +2,7 @@ let RiTwit = require('ritwit');
 let RiTa = require('rita');
 let natural = require('natural');
 let config = require('./Bots_botsConfig.js');
-let express = require('express');
 
-let app = express();
-app.set('Port',5000);
 let rt = new RiTwit(config);
 let tokenizer = new natural.WordPunctTokenizer();
 let metaphone = natural.Metaphone;
