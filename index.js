@@ -65,7 +65,17 @@ rt.onTweetMatching({
     //get the text of the tweet
     let user = tweet.user.name;
     //get user name
-    let text = cleanOriginalText(tweet.text);
+    let rawText;
+    if (tweet.extended_tweet == undefined){
+      if (tweet.truncated){
+        rawText = tweet.text;
+      } else{
+        rawText = tweet.full_text;
+      }
+    } else {
+      rawText = tweet.extended_tweet.full_text;
+    }
+    let text = cleanOriginalText(rawText);
     let arrayOfText = tokenizer.tokenize(text);
     //tokenize text
     let arrayOfPos = RiTa.getPosTags(arrayOfText);
