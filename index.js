@@ -62,7 +62,6 @@ rt.onTweetMatching({
     busy = true;
     console.log('orinal tweet:')
     //console.log(tweet.text);
-    //get the text of the tweet
     let user = tweet.user.name;
     //get user name
     let rawText;
@@ -77,6 +76,8 @@ rt.onTweetMatching({
     } else {
       rawText = tweet.extended_tweet.full_text;
     }
+    console.log(rawText);
+    //get the full text of the tweet 
     let text = cleanOriginalText(rawText);
     let arrayOfText = tokenizer.tokenize(text);
     //tokenize text
