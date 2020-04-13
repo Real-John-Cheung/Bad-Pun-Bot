@@ -77,7 +77,7 @@ rt.onTweetMatching({
       rawText = tweet.extended_tweet.full_text;
     }
     console.log(rawText);
-    //get the full text of the tweet 
+    //get the full text of the tweet
     let text = cleanOriginalText(rawText);
     let arrayOfText = tokenizer.tokenize(text);
     //tokenize text
@@ -196,7 +196,7 @@ rt.onTweetMatching({
         console.log(newText);
         console.log('tweeted');
         busy = false;
-        process.exit(1);
+        //process.exit(1);
       });
     }
   } else {
