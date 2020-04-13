@@ -61,7 +61,7 @@ rt.onTweetMatching({
   if (tweet.lang == 'en' && toFollow.indexOf(tweet.user.id_str) >= 0) {
     busy = true;
     console.log('orinal tweet:')
-    console.log(tweet.text);
+    //console.log(tweet.text);
     //get the text of the tweet
     let user = tweet.user.name;
     //get user name
@@ -69,7 +69,9 @@ rt.onTweetMatching({
     if (tweet.extended_tweet == undefined){
       if (tweet.truncated){
         rawText = tweet.text;
-      } else{
+      } else if (tweet.full_text == undefined){
+        rawText = tweet.text;
+      } else {
         rawText = tweet.full_text;
       }
     } else {
