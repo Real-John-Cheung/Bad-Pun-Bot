@@ -226,9 +226,9 @@ function cleanOriginalText(text) {
 }
 
 function creatNumberToChange(arrayOfText) {
-  if (arrayOfText.length < 40) {
+  if (arrayOfText.length < 30) {
     return 3;
-  } else if (arrayOfText.length < 120) {
+  } else if (arrayOfText.length < 40) {
     return 4;
   } else {
     return 5;
