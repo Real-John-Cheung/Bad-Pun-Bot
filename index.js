@@ -49,7 +49,10 @@ let justinTrudeau = {
 let ruthDavidson = {
   id: '211994193'
 }
-let toFollow = [donaldTrump.id, borisJohnson.id, barackObama.id, modi.id, hillaryClinton.id, mikePence.id, joeBiden.id, tsaiIngWen.id, zhaoLiJian.id, justinTrudeau.id, ruthDavidson.id];
+let scottMorrison = {
+  id:'34116377'
+}
+let toFollow = [donaldTrump.id, borisJohnson.id, barackObama.id, modi.id, hillaryClinton.id, mikePence.id, joeBiden.id, tsaiIngWen.id, zhaoLiJian.id, justinTrudeau.id, ruthDavidson.id,scottMorrison.id];
 
 rt.onTweetMatching({
   follow: toFollow
